@@ -262,6 +262,7 @@ app.get("/users",(req,res) =>{
 
 
 //localhost 3002
-app.listen(3002,() => {
+const PORT = process.env.PORT || 3002
+app.listen(PORT,() => {
     console.log("server is running")
 })
