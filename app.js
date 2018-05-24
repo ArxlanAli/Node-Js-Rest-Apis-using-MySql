@@ -259,6 +259,9 @@ app.get("/users",(req,res) =>{
     })
 })
 
+app.get("/",(req,res)=>{
+    res.send("hello from the root")
+})
 
 
 //localhost 3002
