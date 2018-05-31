@@ -5,6 +5,7 @@ const app = express()
 const mySql = require('mysql')
 const bodyParser = require('body-parser')
 const multer = require('multer')
+const geopoint = require('geopoint')
 
 const request = require('request')
 
@@ -35,7 +36,7 @@ const sendNotifications = (data,callBack) => {
         method: "POST",
         headers: {
           "Content-Type" : "application/json",
-          "Authorization": "key=AIzaSyDnZEXIwG9p1M9Ok7rgseSUWiR57aLabcI"
+          "Authorization": "key=Your-Authorization-Key"
         },
         body: JSON.stringify({
           "priority" : "high",
@@ -161,6 +162,19 @@ app.post('/profileImage', function (req, res) {
     })
     // Everything went fine
   })
+})
+
+app.post("/getDistance",(req,res)=>{
+    let lat = req.body.lat
+    let long = req.body.long
+    let lat1 = req.body.lat1
+    let long1 = req.body.long1
+    console.log(lat,long,lat1,long1)
+    point1 = new geopoint(31.5204, 74.3587);
+    point2 = new geopoint(31.7167, 73.9850);
+    var distance = point1.distanceTo(point2, false)
+    console.log(geopoint.milesToKilometers(distance))
+    //output in kilometers
 })
 
 
